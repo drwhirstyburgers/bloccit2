@@ -15,6 +15,14 @@ posts = Post.all
   )
 end
 
+50.times do
+  Advertisement.create!(
+    title: RandomData.random_sentence,
+    copy: RandomData.random_paragraph,
+    price: RandomData.random_price
+  )
+end
+
 unique_post = Post.find_or_create_by(title: "this is a unique post", body: "this is a unique post body")
 
 Comment.find_or_create_by(post: unique_post, body: "This is a unique comment body")
@@ -22,3 +30,4 @@ Comment.find_or_create_by(post: unique_post, body: "This is a unique comment bod
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Advertisement.count} Advertisements created"
