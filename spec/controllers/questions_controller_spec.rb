@@ -102,25 +102,26 @@ RSpec.describe QuestionsController, type: :controller do
       expect(updated_question.resolved).to eq new_resolved
     end
 
-    it "redirects to the updated post" do
+    it "redirects to the updated question" do
       new_title = RandomData.random_sentence
       new_body = RandomData.random_sentence
+      new_resolved = true
 
-      put :update, params: { id: my_post.id, post: { title: new_title, body: new_body } }
-      expect(response).to redirect_to my_post
+      put :update, params: { id: my_question.id, question: { title: new_title, body: new_body, resolved: new_resolved } }
+      expect(response).to redirect_to my_question
     end
   end
 
   describe "DELETE destroy" do
     it "deletes the post" do
-      delete :destroy, params: { id: my_post.id }
-      count = Post.where({id: my_post.id}).size
+      delete :destroy, params: { id: my_question.id }
+      count = Question.where({id: my_question.id}).size
       expect(count).to eq 0
     end
 
-    it "redirects to the post index" do
-      delete :destroy, params: { id: my_post.id }
-      expect(response).to redirect_to posts_path
+    it "redirects to the question index" do
+      delete :destroy, params: { id: my_question.id }
+      expect(response).to redirect_to questions_path
     end
   end
 end
