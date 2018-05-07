@@ -5,7 +5,12 @@
     <p><%= @question.body %></p>
   </div>
   <div class="col-md-4">
-    <%= check_box(@question, :resolved, options={}, checked_value="true", unchecked_value="false") %>
+    <%= form_for @question do |f| %>
+      <div class="form-group">
+        <%= f.label :resolved %>
+        <%= f.check_box :resolved, checked: @question.resolved %>
+      </div>
+    <% end %>
     <%= link_to "Edit", edit_question_path(@question), class: 'btn btn-success' %>
     <%= link_to "Delete Post", @question, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this question?'} %>
   </div>
