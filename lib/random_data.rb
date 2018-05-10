@@ -25,7 +25,6 @@ module RandomData
   end
 
   def self.random_price
-    numbers = (10..1000)
-    numbers
+    rand(100000)
   end
 end
