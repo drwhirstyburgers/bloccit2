@@ -19,7 +19,6 @@
       <%= render 'comments/form', comment: Comment.new, post: @post %>
     <% end %>
     </div>
-  </div>
   <% if user_is_authorized_delete?(@post) %>
   <div class="col-md-4">
     <%= link_to "Edit", edit_topic_post_path(@post.topic, @post), class: 'btn btn-success' %>
@@ -27,14 +26,17 @@
   </div>
   <% end %>
   <div class="col-md-4">
-     <h3>
-       <%= pluralize(@post.points, 'point') %>
-       <div>
-         <small>
-           <%= pluralize(@post.up_votes, 'up vote') %>,
-           <%= pluralize(@post.down_votes, 'down vote') %>
-         </small>
-       </div>
-     </h3>
-   </div>
+    <h3>
+      <%= pluralize(@post.points, 'point') %>
+    <div>
+      <small>
+        <%= pluralize(@post.up_votes, 'up vote') %>,
+        <%= pluralize(@post.down_votes, 'down vote') %>
+      </small>
+    </div>
+    </h3>
+     <% if current_user %>
+       <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+     <% end %>
+    </div>
 </div>
