@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  after_create :post_favorite
   belongs_to :topic
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -28,5 +29,12 @@ class Post < ApplicationRecord
     age_in_days = (created_at - Time.new(1970,1,1)) / 1.day.seconds
     new_rank = points + age_in_days
     update_attribute(:rank, new_rank)
+  end
+
+  private
+
+  def post_favorite
+    self.favorites.create(post: self, user: user)
+    FavoriteMailer.new_post(user, self).deliver_now
   end
 end
