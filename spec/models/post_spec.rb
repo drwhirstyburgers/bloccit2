@@ -58,9 +58,10 @@ RSpec.describe Post, type: :model do
 
      describe "create_vote" do
        it "should give the post a vote upon its creation" do
-         new_post = topic.posts.create!(title: "title", body: RandomData.random_paragraph, user: user)
+         new_post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+         new_post.votes.create!(value: -1, user: user)
          new_post.save!
-         expect(new_post.votes).to eq(1)
+         expect(new_post.points).to eq(1)
        end
      end
 
