@@ -9,7 +9,7 @@ RSpec.describe Post, type: :model do
   let(:post) { topic.posts.create!(title: title, body: body) }
 
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
-  let(:post) { topic.posts.create!( title: title, body: body, user: user) }
+  let(:post) { topic.posts.create!( title: title, body: body, user: user ) }
 
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:votes) }
@@ -53,6 +53,14 @@ RSpec.describe Post, type: :model do
      describe "#points" do
        it "returns the sum of all down and up votes" do
          expect( post.points ).to eq(@up_votes - @down_votes)
+       end
+     end
+
+     describe "create_vote" do
+       it "should give the post a vote upon its creation" do
+         new_post = topic.posts.create!(title: "title", body: RandomData.random_paragraph, user: user)
+         new_post.save!
+         expect(new_post.votes).to eq(1)
        end
      end
 
