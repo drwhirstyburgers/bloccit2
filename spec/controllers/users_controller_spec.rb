@@ -79,7 +79,7 @@ RSpec.describe UsersController, type: :controller do
 
     it "assigns factory_user to @user" do
       get :show, params: { id: factory_user.id }
-      expect(assigns(:user)).to eq(factory_user)
+      expect(User.last).to eq(factory_user)
     end
   end
 end
