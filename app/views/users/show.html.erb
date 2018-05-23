@@ -24,3 +24,16 @@
 
  <h2>Comments</h2>
  <%= is_comments(@user) %>
+
+<h2>Favorites</h2>
+<% if @user.favorites.any? %>
+    <%= render @favorite_posts %>
+    <% avatar_url = @favorited_posts_author.avatar_url(128) %>
+    <% if avatar_url %>
+      <div class="media-left">
+        <%= image_tag avatar_url, class: 'media-object' %>
+      </div>
+    <% end %>
+<% else %>
+    <p><%= @user.name %> has not favorited any posts yet.</p>
+<% end %>
