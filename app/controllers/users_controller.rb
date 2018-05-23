@@ -24,6 +24,5 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.visible_to(current_user)
     @favorite_posts = @user.favorite_posts
-    @favorited_posts_author = User.find(@favorite_posts.user_id)
   end
 end
