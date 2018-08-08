@@ -1,15 +1,15 @@
 ## Bloccit: a Reddit replica to teach the fundamentals of web development and Rails.
 
-  This is my Bloccit app that I completed during the Foundations lessons at Bloc with Ruby on Rails. It is a clone of Reddit and therefore not especially useful since it's essentially a social network with no users.
+  This is my Bloccit app that I completed during the Foundations lessons at Bloc with Ruby on Rails.
 
-  However, it did teach me several fundamental lessons in programming, including how to:
+  It taught me several fundamental lessons in programming, including how to:
 
   * interact with Github branches
   * test different aspects of a Rails project with RSpec
   * interact with models, views, controllers, and databases
   * implement Ruby gems in a project
 
-  The master branch is of course the "shipped" version of Bloccit, and the Assignment branches are my own coursework that I built without direct guidance from Bloc's course.
+  The master branch is the final version of Bloccit, and the Assignment branches are my own coursework that I built without direct guidance from Bloc's course.
 
   Bloccit features include the abilities to:
 
