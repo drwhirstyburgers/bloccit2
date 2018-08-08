@@ -26,6 +26,3 @@
 
 
   You can view the app in action [here](https://stark-taiga-97122.herokuapp.com/).
-
-
-  Made with my mentor at [Bloc](http://bloc.io).
